@@ -1847,7 +1847,6 @@ paths:
                     description: Whether new phone numbers need to be confirmed before sign-in is possible.
                   sms_provider:
                     type: string
-                    optional: true
                     example: twilio
                     description: Which SMS provider is being used to send messages to phone numbers.
                   saml_enabled:
@@ -1862,9 +1861,8 @@ paths:
                       apple: true
                       email: true
                       phone: true
-                    patternProperties:
-                      "[a-zA-Z0-9]+":
-                        type: boolean
+                    additionalProperties:
+                      type: boolean
 
 components:
   securitySchemes:
@@ -2026,22 +2024,21 @@ components:
       properties:
         keys:
           type: object
-          patternProperties:
-            ".+":
-              type: object
-              properties:
-                name:
+          additionalProperties:
+            type: object
+            properties:
+              name:
+                type: string
+              names:
+                type: array
+                items:
                   type: string
-                names:
-                  type: array
-                  items:
-                    type: string
-                default:
-                  oneOf:
-                    - type: string
-                    - type: number
-                    - type: boolean
-                    - type: object
+              default:
+                oneOf:
+                  - type: string
+                  - type: number
+                  - type: boolean
+                  - type: object
 
     SSOProviderSchema:
       type: object

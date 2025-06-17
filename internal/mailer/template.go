@@ -65,40 +65,40 @@ const (
 	ReauthenticationVerification   = "reauthentication"
 )
 
-const defaultInviteMail = `<h2>You have been invited</h2>
+const defaultInviteMail = `<h2>Та урилга авлаа</h2>
 
-<p>You have been invited to create a user on {{ .SiteURL }}. Follow this link to accept the invite:</p>
-<p><a href="{{ .ConfirmationURL }}">Accept the invite</a></p>
-<p>Alternatively, enter the code: {{ .Token }}</p>`
+<p>Танд {{ .SiteURL }} дээр хэрэглэгч үүсгэхийг урьж байна. Урилгыг хүлээн авахын тулд энэ холбоосыг дагана уу:</p>
+<p><a href="{{ .ConfirmationURL }}">Урилгыг хүлээн авах</a></p>
+<p>Эсвэл кодыг оруулна уу: {{ .Token }}</p>`
 
-const defaultConfirmationMail = `<h2>Confirm your email</h2>
+const defaultConfirmationMail = `<h2>Имэйл хаягаа баталгаажуулна уу</h2>
 
-<p>Follow this link to confirm your email:</p>
-<p><a href="{{ .ConfirmationURL }}">Confirm your email address</a></p>
-<p>Alternatively, enter the code: {{ .Token }}</p>
+<p>Имэйл хаягаа баталгаажуулахын тулд энэ холбоосыг дагана уу:</p>
+<p><a href="{{ .ConfirmationURL }}">Имэйл хаягаа баталгаажуулах</a></p>
+<p>Эсвэл кодыг оруулна уу: {{ .Token }}</p>
 `
 
-const defaultRecoveryMail = `<h2>Reset password</h2>
+const defaultRecoveryMail = `<h2>Нууц үгээ сэргээх</h2>
 
-<p>Follow this link to reset the password for your user:</p>
-<p><a href="{{ .ConfirmationURL }}">Reset password</a></p>
-<p>Alternatively, enter the code: {{ .Token }}</p>`
+<p>Хэрэглэгчийн нууц үгээ сэргээхийн тулд энэ холбоосыг дагана уу:</p>
+<p><a href="{{ .ConfirmationURL }}">Нууц үгээ сэргээх</a></p>
+<p>Эсвэл кодыг оруулна уу: {{ .Token }}</p>`
 
-const defaultMagicLinkMail = `<h2>Magic Link</h2>
+const defaultMagicLinkMail = `<h2>Шидэт холбоос</h2>
 
-<p>Follow this link to login:</p>
-<p><a href="{{ .ConfirmationURL }}">Log In</a></p>
-<p>Alternatively, enter the code: {{ .Token }}</p>`
+<p>Нэвтрэхийн тулд энэ холбоосыг дагана уу:</p>
+<p><a href="{{ .ConfirmationURL }}">Нэвтрэх</a></p>
+<p>Эсвэл кодыг оруулна уу: {{ .Token }}</p>`
 
-const defaultEmailChangeMail = `<h2>Confirm email address change</h2>
+const defaultEmailChangeMail = `<h2>Имэйл хаягийн өөрчлөлтийг баталгаажуулах</h2>
 
-<p>Follow this link to confirm the update of your email address from {{ .Email }} to {{ .NewEmail }}:</p>
-<p><a href="{{ .ConfirmationURL }}">Change email address</a></p>
-<p>Alternatively, enter the code: {{ .Token }}</p>`
+<p>Имэйл хаягаа {{ .Email }}-аас {{ .NewEmail }}-д өөрчлөхийг баталгаажуулахын тулд энэ холбоосыг дагана уу:</p>
+<p><a href="{{ .ConfirmationURL }}">Имэйл хаягаа өөрчлөх</a></p>
+<p>Эсвэл кодыг оруулна уу: {{ .Token }}</p>`
 
-const defaultReauthenticateMail = `<h2>Confirm reauthentication</h2>
+const defaultReauthenticateMail = `<h2>Дахин баталгаажуулалтыг баталгаажуулах</h2>
 
-<p>Enter the code: {{ .Token }}</p>`
+<p>Кодыг оруулна уу: {{ .Token }}</p>`
 
 func (m *TemplateMailer) Headers(messageType string) map[string][]string {
 	originalHeaders := m.Config.SMTP.NormalizedHeaders()
@@ -160,7 +160,7 @@ func (m *TemplateMailer) InviteMail(r *http.Request, user *models.User, otp, ref
 	return m.Mailer.Mail(
 		r.Context(),
 		user.GetEmail(),
-		withDefault(m.Config.Mailer.Subjects.Invite, "You have been invited"),
+		withDefault(m.Config.Mailer.Subjects.Invite, "Танд урилга ирлээ"),
 		m.Config.Mailer.Templates.Invite,
 		defaultInviteMail,
 		data,
@@ -193,7 +193,7 @@ func (m *TemplateMailer) ConfirmationMail(r *http.Request, user *models.User, ot
 	return m.Mailer.Mail(
 		r.Context(),
 		user.GetEmail(),
-		withDefault(m.Config.Mailer.Subjects.Confirmation, "Confirm Your Email"),
+		withDefault(m.Config.Mailer.Subjects.Confirmation, "Имэйл хаягаа баталгаажуулна уу"),
 		m.Config.Mailer.Templates.Confirmation,
 		defaultConfirmationMail,
 		data,
@@ -214,7 +214,7 @@ func (m *TemplateMailer) ReauthenticateMail(r *http.Request, user *models.User, 
 	return m.Mailer.Mail(
 		r.Context(),
 		user.GetEmail(),
-		withDefault(m.Config.Mailer.Subjects.Reauthentication, "Confirm reauthentication"),
+		withDefault(m.Config.Mailer.Subjects.Reauthentication, "Дахин баталгаажуулалтыг баталгаажуулах"),
 		m.Config.Mailer.Templates.Reauthentication,
 		defaultReauthenticateMail,
 		data,
@@ -237,7 +237,7 @@ func (m *TemplateMailer) EmailChangeMail(r *http.Request, user *models.User, otp
 			Address:   user.EmailChange,
 			Otp:       otpNew,
 			TokenHash: user.EmailChangeTokenNew,
-			Subject:   withDefault(m.Config.Mailer.Subjects.EmailChange, "Confirm Email Change"),
+			Subject:   withDefault(m.Config.Mailer.Subjects.EmailChange, "Имэйл хаягийн өөрчлөлтийг баталгаажуулах"),
 			Template:  m.Config.Mailer.Templates.EmailChange,
 		},
 	}
@@ -248,7 +248,7 @@ func (m *TemplateMailer) EmailChangeMail(r *http.Request, user *models.User, otp
 			Address:   currentEmail,
 			Otp:       otpCurrent,
 			TokenHash: user.EmailChangeTokenCurrent,
-			Subject:   withDefault(m.Config.Mailer.Subjects.Confirmation, "Confirm Email Address"),
+			Subject:   withDefault(m.Config.Mailer.Subjects.Confirmation, "Имэйл хаягаа баталгаажуулах"),
 			Template:  m.Config.Mailer.Templates.EmailChange,
 		})
 	}
@@ -284,7 +284,7 @@ func (m *TemplateMailer) EmailChangeMail(r *http.Request, user *models.User, otp
 			errors <- m.Mailer.Mail(
 				ctx,
 				address,
-				withDefault(m.Config.Mailer.Subjects.EmailChange, "Confirm Email Change"),
+				withDefault(m.Config.Mailer.Subjects.EmailChange, "Имэйл хаягийн өөрчлөлтийг баталгаажуулах"),
 				template,
 				defaultEmailChangeMail,
 				data,
@@ -326,7 +326,7 @@ func (m *TemplateMailer) RecoveryMail(r *http.Request, user *models.User, otp, r
 	return m.Mailer.Mail(
 		r.Context(),
 		user.GetEmail(),
-		withDefault(m.Config.Mailer.Subjects.Recovery, "Reset Your Password"),
+		withDefault(m.Config.Mailer.Subjects.Recovery, "Нууц үгээ сэргээх"),
 		m.Config.Mailer.Templates.Recovery,
 		defaultRecoveryMail,
 		data,
@@ -359,7 +359,7 @@ func (m *TemplateMailer) MagicLinkMail(r *http.Request, user *models.User, otp, 
 	return m.Mailer.Mail(
 		r.Context(),
 		user.GetEmail(),
-		withDefault(m.Config.Mailer.Subjects.MagicLink, "Your Magic Link"),
+		withDefault(m.Config.Mailer.Subjects.MagicLink, "Таны шидэт холбоос"),
 		m.Config.Mailer.Templates.MagicLink,
 		defaultMagicLinkMail,
 		data,

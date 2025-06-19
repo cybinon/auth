@@ -48,7 +48,7 @@ func (ts *ExternalTestSuite) createUser(providerId string, email string, name st
 	if avatar != "" {
 		userData["avatar_url"] = avatar
 	}
-	u, err := models.NewUser("", email, "test", ts.Config.JWT.Aud, userData)
+	u, err := models.NewUser("TEST0101", "", email, "test", ts.Config.JWT.Aud, userData)
 
 	if confirmationToken != "" {
 		u.ConfirmationToken = confirmationToken

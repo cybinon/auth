@@ -64,7 +64,7 @@ func TestHooks(t *testing.T) {
 
 func (ts *HooksTestSuite) SetupTest() {
 	models.TruncateAll(ts.API.db)
-	u, err := models.NewUser("123456789", "testemail@gmail.com", "securetestpassword", ts.Config.JWT.Aud, nil)
+	u, err := models.NewUser("TEST0101", "123456789", "testemail@gmail.com", "securetestpassword", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err, "Error creating test user model")
 	require.NoError(ts.T(), ts.API.db.Create(u), "Error saving new test user")
 	ts.TestUser = u

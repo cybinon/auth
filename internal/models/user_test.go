@@ -45,7 +45,7 @@ func TestUser(t *testing.T) {
 }
 
 func (ts *UserTestSuite) TestUpdateAppMetadata() {
-	u, err := NewUser("", "", "", "", nil)
+	u, err := NewUser("TEST0101", "", "", "", "", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), u.UpdateAppMetaData(ts.db, make(map[string]interface{})))
 
@@ -64,7 +64,7 @@ func (ts *UserTestSuite) TestUpdateAppMetadata() {
 }
 
 func (ts *UserTestSuite) TestUpdateUserMetadata() {
-	u, err := NewUser("", "", "", "", nil)
+	u, err := NewUser("TEST0101", "", "", "", "", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), u.UpdateUserMetaData(ts.db, make(map[string]interface{})))
 
@@ -185,7 +185,7 @@ func (ts *UserTestSuite) createUser() *User {
 }
 
 func (ts *UserTestSuite) createUserWithEmail(email string) *User {
-	user, err := NewUser("", email, "secret", "test", nil)
+	user, err := NewUser("TEST0101", "", email, "secret", "test", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(user))
 
@@ -200,7 +200,7 @@ func (ts *UserTestSuite) createUserWithEmail(email string) *User {
 }
 
 func (ts *UserTestSuite) TestRemoveUnconfirmedIdentities() {
-	user, err := NewUser("+29382983298", "someone@example.com", "abcdefgh", "authenticated", nil)
+	user, err := NewUser("TEST0202", "+29382983298", "someone@example.com", "abcdefgh", "authenticated", nil)
 	require.NoError(ts.T(), err)
 
 	user.AppMetaData = map[string]interface{}{
@@ -250,7 +250,7 @@ func (ts *UserTestSuite) TestRemoveUnconfirmedIdentities() {
 }
 
 func (ts *UserTestSuite) TestConfirmEmailChange() {
-	user, err := NewUser("", "test@example.com", "", "authenticated", nil)
+	user, err := NewUser("TEST0101", "", "test@example.com", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(user))
 
@@ -278,7 +278,7 @@ func (ts *UserTestSuite) TestConfirmEmailChange() {
 }
 
 func (ts *UserTestSuite) TestConfirmPhoneChange() {
-	user, err := NewUser("123456789", "", "", "authenticated", nil)
+	user, err := NewUser("TEST0101", "123456789", "", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(user))
 
@@ -306,7 +306,7 @@ func (ts *UserTestSuite) TestConfirmPhoneChange() {
 }
 
 func (ts *UserTestSuite) TestUpdateUserEmailSuccess() {
-	userA, err := NewUser("", "foo@example.com", "", "authenticated", nil)
+	userA, err := NewUser("TEST0101", "", "foo@example.com", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(userA))
 
@@ -337,7 +337,7 @@ func (ts *UserTestSuite) TestUpdateUserEmailSuccess() {
 }
 
 func (ts *UserTestSuite) TestUpdateUserEmailFailure() {
-	userA, err := NewUser("", "foo@example.com", "", "authenticated", nil)
+	userA, err := NewUser("TEST0101", "", "foo@example.com", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(userA))
 
@@ -355,7 +355,7 @@ func (ts *UserTestSuite) TestUpdateUserEmailFailure() {
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(secondaryIdentity))
 
-	userB, err := NewUser("", "bar@example.com", "", "authenticated", nil)
+	userB, err := NewUser("TEST0101", "", "bar@example.com", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(userB))
 

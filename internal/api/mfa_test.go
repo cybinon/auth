@@ -55,7 +55,7 @@ func (ts *MFATestSuite) SetupTest() {
 	ts.TestEmail = "test@example.com"
 	ts.TestPassword = "password"
 	// Create user
-	u, err := models.NewUser("123456789", ts.TestEmail, ts.TestPassword, ts.Config.JWT.Aud, nil)
+	u, err := models.NewUser("TEST0101", "123456789", ts.TestEmail, ts.TestPassword, ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err, "Error creating test user model")
 	require.NoError(ts.T(), ts.API.db.Create(u), "Error saving new test user")
 	// Create Factor

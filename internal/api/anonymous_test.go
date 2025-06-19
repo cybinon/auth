@@ -253,12 +253,12 @@ func (ts *AnonymousTestSuite) TestAdminUpdateAnonymousUser() {
 	adminJwt, err := jwt.NewWithClaims(jwt.SigningMethodHS256, claims).SignedString([]byte(ts.Config.JWT.Secret))
 	require.NoError(ts.T(), err)
 
-	u1, err := models.NewUser("", "", "", ts.Config.JWT.Aud, nil)
+	u1, err := models.NewUser("TEST0101", "", "", "", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err)
 	u1.IsAnonymous = true
 	require.NoError(ts.T(), ts.API.db.Create(u1))
 
-	u2, err := models.NewUser("", "", "", ts.Config.JWT.Aud, nil)
+	u2, err := models.NewUser("TEST0101", "", "", "", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err)
 	u2.IsAnonymous = true
 	require.NoError(ts.T(), ts.API.db.Create(u2))

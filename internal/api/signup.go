@@ -19,6 +19,7 @@ import (
 // SignupParams are the parameters the Signup endpoint accepts
 type SignupParams struct {
 	Email               string                 `json:"email"`
+	Sid                 string                 `json:"sid"`
 	Phone               string                 `json:"phone"`
 	Password            string                 `json:"password"`
 	Data                map[string]interface{} `json:"data"`
@@ -75,15 +76,15 @@ func (p *SignupParams) ConfigureDefaults() {
 func (params *SignupParams) ToUserModel(isSSOUser bool) (user *models.User, err error) {
 	switch params.Provider {
 	case "email":
-		user, err = models.NewUser("", params.Email, params.Password, params.Aud, params.Data)
+		user, err = models.NewUser("", params.Sid, params.Email, params.Password, params.Aud, params.Data)
 	case "phone":
-		user, err = models.NewUser(params.Phone, "", params.Password, params.Aud, params.Data)
+		user, err = models.NewUser(params.Sid, params.Phone, "", params.Password, params.Aud, params.Data)
 	case "anonymous":
-		user, err = models.NewUser("", "", "", params.Aud, params.Data)
+		user, err = models.NewUser(params.Sid, "", "", "", params.Aud, params.Data)
 		user.IsAnonymous = true
 	default:
 		// handles external provider case
-		user, err = models.NewUser("", params.Email, params.Password, params.Aud, params.Data)
+		user, err = models.NewUser("", params.Sid, params.Email, params.Password, params.Aud, params.Data)
 	}
 	if err != nil {
 		err = apierrors.NewInternalServerError("Database error creating user").WithInternalError(err)

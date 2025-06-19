@@ -33,7 +33,7 @@ func TestFactor(t *testing.T) {
 
 func (ts *FactorTestSuite) SetupTest() {
 	TruncateAll(ts.db)
-	user, err := NewUser("", "agenericemail@gmail.com", "secret", "test", nil)
+	user, err := NewUser("TEST0101", "", "agenericemail@gmail.com", "secret", "test", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(user))
 

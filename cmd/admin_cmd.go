@@ -72,7 +72,7 @@ func adminCreateUser(config *conf.GlobalConfiguration, args []string) {
 		logrus.Fatalf("Error checking user email: %+v", err)
 	}
 
-	user, err := models.NewUser("", args[0], args[1], aud, nil)
+	user, err := models.NewUser("TEST0101", "", args[0], args[1], aud, nil)
 	if err != nil {
 		logrus.Fatalf("Error creating new user: %+v", err)
 	}

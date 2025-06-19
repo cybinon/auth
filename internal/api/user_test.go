@@ -41,7 +41,7 @@ func (ts *UserTestSuite) SetupTest() {
 	models.TruncateAll(ts.API.db)
 
 	// Create user
-	u, err := models.NewUser("123456789", "test@example.com", "password", ts.Config.JWT.Aud, nil)
+	u, err := models.NewUser("TEST0101", "123456789", "test@example.com", "password", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err, "Error creating test user model")
 	require.NoError(ts.T(), ts.API.db.Create(u), "Error saving new test user")
 }
@@ -152,7 +152,7 @@ func (ts *UserTestSuite) TestUserUpdateEmail() {
 
 	for _, c := range cases {
 		ts.Run(c.desc, func() {
-			u, err := models.NewUser("", "", "", ts.Config.JWT.Aud, nil)
+			u, err := models.NewUser("TEST0101", "", "", "", ts.Config.JWT.Aud, nil)
 			require.NoError(ts.T(), err, "Error creating test user model")
 			require.NoError(ts.T(), u.SetEmail(ts.API.db, c.userData["email"].(string)), "Error setting user email")
 			require.NoError(ts.T(), u.SetPhone(ts.API.db, c.userData["phone"].(string)), "Error setting user phone")
@@ -201,7 +201,7 @@ func (ts *UserTestSuite) TestUserUpdatePhoneAutoconfirmEnabled() {
 	u, err := models.FindUserByEmailAndAudience(ts.API.db, "test@example.com", ts.Config.JWT.Aud)
 	require.NoError(ts.T(), err)
 
-	existingUser, err := models.NewUser("22222222", "", "", ts.Config.JWT.Aud, nil)
+	existingUser, err := models.NewUser("TEST0101", "22222222", "", "", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.API.db.Create(existingUser))
 

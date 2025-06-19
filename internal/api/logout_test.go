@@ -36,7 +36,7 @@ func TestLogout(t *testing.T) {
 func (ts *LogoutTestSuite) SetupTest() {
 	models.TruncateAll(ts.API.db)
 
-	u, err := models.NewUser("", "test@example.com", "password", ts.Config.JWT.Aud, nil)
+	u, err := models.NewUser("TEST0101", "", "test@example.com", "password", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err, "Error creating test user model")
 	require.NoError(ts.T(), ts.API.db.Create(u), "Error saving new test user")
 

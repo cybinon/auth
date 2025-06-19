@@ -54,7 +54,7 @@ func (ts *InviteTestSuite) makeSuperAdmin(email string) string {
 		require.NoError(ts.T(), ts.API.db.Destroy(u), "Error deleting user")
 	}
 
-	u, err := models.NewUser("123456789", email, "test", ts.Config.JWT.Aud, map[string]interface{}{"full_name": "Test User"})
+	u, err := models.NewUser("TEST0101", "123456789", email, "test", ts.Config.JWT.Aud, map[string]interface{}{"full_name": "Test User"})
 	require.NoError(ts.T(), err, "Error making new user")
 	require.NoError(ts.T(), ts.API.db.Create(u))
 
@@ -255,7 +255,7 @@ func (ts *InviteTestSuite) TestVerifyInvite() {
 
 	for _, c := range cases {
 		ts.Run(c.desc, func() {
-			user, err := models.NewUser("", c.email, "", ts.Config.JWT.Aud, nil)
+			user, err := models.NewUser("TEST0101", "", c.email, "", ts.Config.JWT.Aud, nil)
 			now := time.Now()
 			user.InvitedAt = &now
 			user.ConfirmationSentAt = &now

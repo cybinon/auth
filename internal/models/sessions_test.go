@@ -21,7 +21,7 @@ type SessionsTestSuite struct {
 func (ts *SessionsTestSuite) SetupTest() {
 	TruncateAll(ts.db)
 	email := "test@example.com"
-	user, err := NewUser("", email, "secret", ts.Config.JWT.Aud, nil)
+	user, err := NewUser("TEST0101", "", email, "secret", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err)
 
 	err = ts.db.Create(user)

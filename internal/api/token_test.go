@@ -50,7 +50,7 @@ func (ts *TokenTestSuite) SetupTest() {
 	models.TruncateAll(ts.API.db)
 
 	// Create user & refresh token
-	u, err := models.NewUser("", "test@example.com", "password", ts.Config.JWT.Aud, nil)
+	u, err := models.NewUser("TEST0101", "", "test@example.com", "password", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err, "Error creating test user model")
 	t := time.Now()
 	u.EmailConfirmedAt = &t
@@ -504,7 +504,7 @@ func (ts *TokenTestSuite) TestRefreshTokenReuseRevocation() {
 }
 
 func (ts *TokenTestSuite) createBannedUser() *models.User {
-	u, err := models.NewUser("", "banned@example.com", "password", ts.Config.JWT.Aud, nil)
+	u, err := models.NewUser("TEST0101", "", "banned@example.com", "password", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err, "Error creating test user model")
 	t := time.Now()
 	u.EmailConfirmedAt = &t
@@ -795,7 +795,7 @@ end; $$ language plpgsql;`,
 
 func (ts *TokenTestSuite) TestAllowSelectAuthenticationMethods() {
 
-	companyUser, err := models.NewUser("12345678", "test@company.com", "password", ts.Config.JWT.Aud, nil)
+	companyUser, err := models.NewUser("TEST0101", "12345678", "test@company.com", "password", ts.Config.JWT.Aud, nil)
 	t := time.Now()
 	companyUser.EmailConfirmedAt = &t
 	require.NoError(ts.T(), err, "Error creating test user model")

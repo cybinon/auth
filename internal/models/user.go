@@ -20,7 +20,8 @@ import (
 
 // User respresents a registered user with email/password authentication
 type User struct {
-	ID uuid.UUID `json:"id" db:"id"`
+	ID  uuid.UUID `json:"id" db:"id"`
+	SID string    `json:"sid" db:"sid"`
 
 	Aud       string             `json:"aud" db:"aud"`
 	Role      string             `json:"role" db:"role"`
@@ -104,7 +105,7 @@ func NewUserWithPasswordHash(phone, email, passwordHash, aud string, userData ma
 }
 
 // NewUser initializes a new user from an email, password and user data.
-func NewUser(phone, email, password, aud string, userData map[string]interface{}) (*User, error) {
+func NewUser(sid, phone, email, password, aud string, userData map[string]interface{}) (*User, error) {
 	passwordHash := ""
 
 	if password != "" {
@@ -124,6 +125,7 @@ func NewUser(phone, email, password, aud string, userData map[string]interface{}
 	user := &User{
 		ID:                id,
 		Aud:               aud,
+		SID:               sid,
 		Email:             storage.NullString(strings.ToLower(email)),
 		Phone:             storage.NullString(phone),
 		UserMetaData:      userData,

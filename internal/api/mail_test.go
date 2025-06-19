@@ -44,7 +44,7 @@ func (ts *MailTestSuite) SetupTest() {
 	ts.Config.Mailer.SecureEmailChangeEnabled = true
 
 	// Create User
-	u, err := models.NewUser("12345678", "test@example.com", "password", ts.Config.JWT.Aud, nil)
+	u, err := models.NewUser("TEST0101", "12345678", "test@example.com", "password", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err, "Error creating new user model")
 	require.NoError(ts.T(), ts.API.db.Create(u), "Error saving new user")
 }

@@ -58,7 +58,7 @@ func (ts *AccountLinkingTestSuite) TestCreateAccountDecisionNoAccounts() {
 }
 
 func (ts *AccountLinkingTestSuite) TestCreateAccountDecisionWithAccounts() {
-	userA, err := NewUser("", "test@example.com", "", "authenticated", nil)
+	userA, err := NewUser("TEST0101", "", "test@example.com", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(userA))
 	identityA, err := NewIdentity(userA, "provider", map[string]interface{}{
@@ -68,7 +68,7 @@ func (ts *AccountLinkingTestSuite) TestCreateAccountDecisionWithAccounts() {
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(identityA))
 
-	userB, err := NewUser("", "test@samltest.id", "", "authenticated", nil)
+	userB, err := NewUser("TEST0101", "", "test@samltest.id", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(userB))
 
@@ -108,7 +108,7 @@ func (ts *AccountLinkingTestSuite) TestCreateAccountDecisionWithAccounts() {
 }
 
 func (ts *AccountLinkingTestSuite) TestAccountExists() {
-	userA, err := NewUser("", "test@example.com", "", "authenticated", nil)
+	userA, err := NewUser("TEST0101", "", "test@example.com", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(userA))
 	identityA, err := NewIdentity(userA, "provider", map[string]interface{}{
@@ -132,7 +132,7 @@ func (ts *AccountLinkingTestSuite) TestAccountExists() {
 }
 
 func (ts *AccountLinkingTestSuite) TestLinkingScenarios() {
-	userA, err := NewUser("", "test@example.com", "", "authenticated", nil)
+	userA, err := NewUser("TEST0101", "", "test@example.com", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(userA))
 	identityA, err := NewIdentity(userA, "provider", map[string]interface{}{
@@ -142,7 +142,7 @@ func (ts *AccountLinkingTestSuite) TestLinkingScenarios() {
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(identityA))
 
-	userB, err := NewUser("", "test@samltest.id", "", "authenticated", nil)
+	userB, err := NewUser("TEST0101", "", "test@samltest.id", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(userB))
 
@@ -278,7 +278,7 @@ func (ts *AccountLinkingTestSuite) TestLinkingScenarios() {
 }
 
 func (ts *AccountLinkingTestSuite) TestMultipleAccounts() {
-	userA, err := NewUser("", "test@example.com", "", "authenticated", nil)
+	userA, err := NewUser("TEST0101", "", "test@example.com", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(userA))
 	identityA, err := NewIdentity(userA, "provider", map[string]interface{}{
@@ -288,7 +288,7 @@ func (ts *AccountLinkingTestSuite) TestMultipleAccounts() {
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(identityA))
 
-	userB, err := NewUser("", "test-b@example.com", "", "authenticated", nil)
+	userB, err := NewUser("TEST0101", "", "test-b@example.com", "", "authenticated", nil)
 	require.NoError(ts.T(), err)
 	require.NoError(ts.T(), ts.db.Create(userB))
 	identityB, err := NewIdentity(userB, "provider", map[string]interface{}{

@@ -79,7 +79,7 @@ func (ts *RefreshTokenTestSuite) createUser() *User {
 }
 
 func (ts *RefreshTokenTestSuite) createUserWithEmail(email string) *User {
-	user, err := NewUser("", email, "secret", "test", nil)
+	user, err := NewUser("TEST0101", "", email, "secret", "test", nil)
 	require.NoError(ts.T(), err)
 
 	err = ts.db.Create(user)

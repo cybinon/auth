@@ -111,7 +111,7 @@ func (ts *ResendTestSuite) TestResendValidation() {
 
 func (ts *ResendTestSuite) TestResendSuccess() {
 	// Create user
-	u, err := models.NewUser("123456789", "foo@example.com", "password", ts.Config.JWT.Aud, nil)
+	u, err := models.NewUser("TEST0101", "123456789", "foo@example.com", "password", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err, "Error creating test user model")
 
 	// Avoid max freq limit error
@@ -131,7 +131,7 @@ func (ts *ResendTestSuite) TestResendSuccess() {
 	require.NoError(ts.T(), models.CreateOneTimeToken(ts.API.db, u.ID, u.GetEmail(), u.ConfirmationToken, models.ConfirmationToken))
 	require.NoError(ts.T(), models.CreateOneTimeToken(ts.API.db, u.ID, u.EmailChange, u.EmailChangeTokenNew, models.EmailChangeTokenNew))
 
-	phoneUser, err := models.NewUser("1234567890", "", "password", ts.Config.JWT.Aud, nil)
+	phoneUser, err := models.NewUser("TEST0101", "1234567890", "", "password", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err, "Error creating test user model")
 	phoneUser.EmailChange = "bar@example.com"
 	phoneUser.EmailChangeSentAt = &now
@@ -139,7 +139,7 @@ func (ts *ResendTestSuite) TestResendSuccess() {
 	require.NoError(ts.T(), ts.API.db.Create(phoneUser), "Error saving new test user")
 	require.NoError(ts.T(), models.CreateOneTimeToken(ts.API.db, phoneUser.ID, phoneUser.EmailChange, phoneUser.EmailChangeTokenNew, models.EmailChangeTokenNew))
 
-	emailUser, err := models.NewUser("", "bar@example.com", "password", ts.Config.JWT.Aud, nil)
+	emailUser, err := models.NewUser("TEST0101", "", "bar@example.com", "password", ts.Config.JWT.Aud, nil)
 	require.NoError(ts.T(), err, "Error creating test user model")
 	phoneUser.PhoneChange = "1234567890"
 	phoneUser.PhoneChangeSentAt = &now

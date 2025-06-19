@@ -21,6 +21,7 @@ import (
 
 type AdminUserParams struct {
 	Id           string                 `json:"id"`
+	Sid          string                 `json:"sid"`
 	Aud          string                 `json:"aud"`
 	Role         string                 `json:"role"`
 	Email        string                 `json:"email"`
@@ -385,7 +386,7 @@ func (a *API) adminUserCreate(w http.ResponseWriter, r *http.Request) error {
 	if params.PasswordHash != "" {
 		user, err = models.NewUserWithPasswordHash(params.Phone, params.Email, params.PasswordHash, aud, params.UserMetaData)
 	} else {
-		user, err = models.NewUser(params.Phone, params.Email, *params.Password, aud, params.UserMetaData)
+		user, err = models.NewUser(params.Sid, params.Phone, params.Email, *params.Password, aud, params.UserMetaData)
 	}
 
 	if err != nil {

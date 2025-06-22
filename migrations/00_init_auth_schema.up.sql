@@ -3,7 +3,7 @@ CREATE SEQUENCE IF NOT EXISTS {{ index .Options "Namespace" }}.users_sid_seq STA
 CREATE TABLE IF NOT EXISTS {{ index .Options "Namespace" }}.users (
 	instance_id uuid NULL,
 	id uuid NOT NULL UNIQUE,
-	"sid" varchar(4) NOT NULL UNIQUE DEFAULT lpad((nextval('{{ index .Options "Namespace" }}.users_sid_seq'))::text, 6, '0'),
+	"sid" varchar(25) NOT NULL UNIQUE DEFAULT lpad((nextval('{{ index .Options "Namespace" }}.users_sid_seq'))::text, 6, '0'),
 	aud varchar(255) NULL,
 	"role" varchar(255) NULL,
 	email varchar(255) NULL UNIQUE,
@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS {{ index .Options "Namespace" }}.users (
 	updated_at timestamptz NULL,
 	CONSTRAINT users_pkey PRIMARY KEY (id)
 );
+
 CREATE INDEX IF NOT EXISTS users_instance_id_email_idx ON {{ index .Options "Namespace" }}.users USING btree (instance_id, email);
 CREATE INDEX IF NOT EXISTS users_instance_id_idx ON {{ index .Options "Namespace" }}.users USING btree (instance_id);
 comment on table {{ index .Options "Namespace" }}.users is 'Auth: Stores user login data within a secure schema.';

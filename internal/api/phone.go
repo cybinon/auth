@@ -8,13 +8,13 @@ import (
 	"text/template"
 	"time"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/api/sms_provider"
+	"github.com/cybinon/auth/internal/crypto"
+	"github.com/cybinon/auth/internal/hooks/v0hooks"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/storage"
 	"github.com/pkg/errors"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/sms_provider"
-	"github.com/supabase/auth/internal/crypto"
-	"github.com/supabase/auth/internal/hooks/v0hooks"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
 )
 
 var e164Format = regexp.MustCompile("^[1-9][0-9]{1,14}$")

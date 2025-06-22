@@ -8,10 +8,10 @@ import (
 	"runtime/debug"
 	"time"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/observability"
+	"github.com/cybinon/auth/internal/utilities"
 	"github.com/pkg/errors"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/observability"
-	"github.com/supabase/auth/internal/utilities"
 )
 
 // Common error messages during signup flow

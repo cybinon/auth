@@ -6,15 +6,15 @@ import (
 
 	"net/http/httptest"
 
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/hooks/hookserrors"
+	"github.com/cybinon/auth/internal/hooks/v0hooks"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/storage"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/hooks/hookserrors"
-	"github.com/supabase/auth/internal/hooks/v0hooks"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
 
 	"gopkg.in/h2non/gock.v1"
 )

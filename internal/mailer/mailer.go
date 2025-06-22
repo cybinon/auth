@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"net/url"
 
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/models"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/models"
 )
 
 // Mailer defines the interface a mailer must implement.

@@ -14,12 +14,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/models"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/models"
 )
 
 type TokenTestSuite struct {

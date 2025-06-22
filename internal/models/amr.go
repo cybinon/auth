@@ -3,9 +3,9 @@ package models
 import (
 	"time"
 
+	"github.com/cybinon/auth/internal/storage"
 	"github.com/gobuffalo/pop/v6"
 	"github.com/gofrs/uuid"
-	"github.com/supabase/auth/internal/storage"
 )
 
 type AMRClaim struct {

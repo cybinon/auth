@@ -13,11 +13,11 @@ import (
 	"testing/iotest"
 	"time"
 
+	"github.com/cybinon/auth/internal/api"
+	"github.com/cybinon/auth/internal/e2e"
+	"github.com/cybinon/auth/internal/models"
 	"github.com/gofrs/uuid"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/api"
-	"github.com/supabase/auth/internal/e2e"
-	"github.com/supabase/auth/internal/models"
 )
 
 func TestInstance(t *testing.T) {

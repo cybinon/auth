@@ -6,14 +6,14 @@ import (
 	"testing"
 	"time"
 
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/e2e"
+	"github.com/cybinon/auth/internal/hooks/hookshttp"
+	"github.com/cybinon/auth/internal/hooks/hookspgfunc"
+	"github.com/cybinon/auth/internal/models"
 	"github.com/gofrs/uuid"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/e2e"
-	"github.com/supabase/auth/internal/hooks/hookshttp"
-	"github.com/supabase/auth/internal/hooks/hookspgfunc"
-	"github.com/supabase/auth/internal/models"
 )
 
 type M = map[string]any

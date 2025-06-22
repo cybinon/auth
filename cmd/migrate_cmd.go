@@ -3,6 +3,7 @@ package cmd
 import (
 	"embed"
 	"fmt"
+	"log"
 	"net/url"
 	"os"
 
@@ -11,6 +12,8 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+
+	"github.com/cybinon/auth/internal/utilities"
 )
 
 var EmbeddedMigrations embed.FS
@@ -24,8 +27,22 @@ var migrateCmd = cobra.Command{
 func migrate(cmd *cobra.Command, args []string) {
 	globalConfig := loadGlobalConfig(cmd.Context())
 
+	// Sanitize the DB URL to handle special characters in password
+	sanitizedDBURL := utilities.SanitizeDatabaseURL(globalConfig.DB.URL)
+
+	u, err := url.Parse(sanitizedDBURL)
+	if err != nil {
+		log.Fatalf("%+v", errors.Wrap(err, "parsing database URL"))
+	}
+	processedUrl := sanitizedDBURL
+	if len(u.Query()) != 0 {
+		processedUrl = fmt.Sprintf("%s&application_name=gotrue_migrations", processedUrl)
+	} else {
+		processedUrl = fmt.Sprintf("%s?application_name=gotrue_migrations", processedUrl)
+	}
+	// Also sanitize the driver detection code at the beginning
 	if globalConfig.DB.Driver == "" && globalConfig.DB.URL != "" {
-		u, err := url.Parse(globalConfig.DB.URL)
+		u, err := url.Parse(utilities.SanitizeDatabaseURL(globalConfig.DB.URL))
 		if err != nil {
 			logrus.Fatalf("%+v", errors.Wrap(err, "parsing db connection url"))
 		}
@@ -53,13 +70,6 @@ func migrate(cmd *cobra.Command, args []string) {
 		}
 	}
 
-	u, _ := url.Parse(globalConfig.DB.URL)
-	processedUrl := globalConfig.DB.URL
-	if len(u.Query()) != 0 {
-		processedUrl = fmt.Sprintf("%s&application_name=gotrue_migrations", processedUrl)
-	} else {
-		processedUrl = fmt.Sprintf("%s?application_name=gotrue_migrations", processedUrl)
-	}
 	deets := &pop.ConnectionDetails{
 		Dialect: globalConfig.DB.Driver,
 		URL:     processedUrl,

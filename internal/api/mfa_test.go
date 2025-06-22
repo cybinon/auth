@@ -12,13 +12,13 @@ import (
 
 	"github.com/gofrs/uuid"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/api/sms_provider"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/crypto"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/utilities"
 	"github.com/pquerna/otp"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/sms_provider"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/crypto"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/utilities"
 
 	"github.com/pquerna/otp/totp"
 	"github.com/stretchr/testify/require"

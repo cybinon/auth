@@ -11,13 +11,13 @@ import (
 	"net/http/httptest"
 	"net/url"
 
+	"github.com/cybinon/auth/internal/api"
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/storage"
+	"github.com/cybinon/auth/internal/storage/test"
+	"github.com/cybinon/auth/internal/utilities"
 	jwt "github.com/golang-jwt/jwt/v5"
-	"github.com/supabase/auth/internal/api"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/storage/test"
-	"github.com/supabase/auth/internal/utilities"
 )
 
 type Instance struct {

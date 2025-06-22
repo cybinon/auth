@@ -4,12 +4,12 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/api/provider"
+	"github.com/cybinon/auth/internal/hooks/v0hooks"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/storage"
 	"github.com/fatih/structs"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/provider"
-	"github.com/supabase/auth/internal/hooks/v0hooks"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
 )
 
 func (a *API) triggerBeforeUserCreated(

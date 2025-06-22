@@ -3,7 +3,7 @@ package ratelimit
 import (
 	"testing"
 
-	"github.com/supabase/auth/internal/conf"
+	"github.com/cybinon/auth/internal/conf"
 )
 
 func TestNew(t *testing.T) {

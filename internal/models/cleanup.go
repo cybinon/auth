@@ -11,9 +11,9 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/observability"
-	"github.com/supabase/auth/internal/storage"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/observability"
+	"github.com/cybinon/auth/internal/storage"
 )
 
 type Cleaner interface {

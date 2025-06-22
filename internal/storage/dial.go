@@ -8,12 +8,13 @@ import (
 	"time"
 
 	"github.com/XSAM/otelsql"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/utilities"
 	"github.com/gobuffalo/pop/v6"
 	"github.com/gobuffalo/pop/v6/columns"
 	"github.com/jmoiron/sqlx"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/conf"
 )
 
 // Connection is the interface a storage provider must implement.
@@ -24,10 +25,14 @@ type Connection struct {
 // Dial will connect to that storage engine
 func Dial(config *conf.GlobalConfiguration) (*Connection, error) {
 	if config.DB.Driver == "" && config.DB.URL != "" {
-		u, err := url.Parse(config.DB.URL)
+		// Sanitize the DB URL to handle special characters in password
+		sanitizedDBURL := utilities.SanitizeDatabaseURL(config.DB.URL)
+
+		u, err := url.Parse(sanitizedDBURL)
 		if err != nil {
-			return nil, errors.Wrap(err, "parsing db connection url")
+			return nil, errors.Wrap(err, "opening database connection")
 		}
+
 		config.DB.Driver = u.Scheme
 	}
 
@@ -68,7 +73,7 @@ func Dial(config *conf.GlobalConfiguration) (*Connection, error) {
 	db, err := pop.NewConnection(&pop.ConnectionDetails{
 		Dialect:         config.DB.Driver,
 		Driver:          driver,
-		URL:             config.DB.URL,
+		URL:             utilities.SanitizeDatabaseURL(config.DB.URL),
 		Pool:            config.DB.MaxPoolSize,
 		IdlePool:        config.DB.MaxIdlePoolSize,
 		ConnMaxLifetime: config.DB.ConnMaxLifetime,

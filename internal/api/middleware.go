@@ -11,13 +11,13 @@ import (
 	"sync"
 	"time"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/observability"
+	"github.com/cybinon/auth/internal/security"
+	"github.com/cybinon/auth/internal/utilities"
 	chimiddleware "github.com/go-chi/chi/v5/middleware"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/observability"
-	"github.com/supabase/auth/internal/security"
-	"github.com/supabase/auth/internal/utilities"
 
 	"github.com/didip/tollbooth/v5"
 	"github.com/didip/tollbooth/v5/limiter"

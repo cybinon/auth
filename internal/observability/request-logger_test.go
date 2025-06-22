@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/cybinon/auth/internal/conf"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/conf"
 )
 
 const apiTestConfig = "../../hack/test.env"

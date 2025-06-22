@@ -11,11 +11,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/cybinon/auth/internal/conf"
 	"github.com/fsnotify/fsnotify"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
-	"github.com/supabase/auth/internal/conf"
 	"golang.org/x/sync/errgroup"
 )
 

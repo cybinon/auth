@@ -5,12 +5,12 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/api/sms_provider"
+	"github.com/cybinon/auth/internal/mailer"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/storage"
 	"github.com/gofrs/uuid"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/sms_provider"
-	"github.com/supabase/auth/internal/mailer"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
 )
 
 // UserUpdateParams parameters for updating a user

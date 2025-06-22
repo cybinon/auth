@@ -4,10 +4,10 @@ import (
 	"net/http"
 
 	"github.com/crewjam/saml"
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/storage"
 	"github.com/gofrs/uuid"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
 )
 
 type SingleSignOnParams struct {

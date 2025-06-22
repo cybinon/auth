@@ -8,10 +8,10 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/cybinon/auth/internal/api/provider"
+	"github.com/cybinon/auth/internal/models"
 	jwt "github.com/golang-jwt/jwt/v5"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/api/provider"
-	"github.com/supabase/auth/internal/models"
 )
 
 func (ts *ExternalTestSuite) TestSignupExternalKakao() {

@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/security"
 	"github.com/pkg/errors"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/security"
 
-	"github.com/supabase/auth/internal/utilities"
+	"github.com/cybinon/auth/internal/utilities"
 )
 
 func sendJSON(w http.ResponseWriter, status int, obj interface{}) error {

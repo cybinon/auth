@@ -31,8 +31,8 @@ Create a `.env` file to store your own custom env vars. See [`example.env`](exam
 2. Build the auth binary: `make build` . You should see an output like this:
 
 ```bash
-go build -ldflags "-X github.com/supabase/auth/cmd.Version=`git rev-parse HEAD`"
-GOOS=linux GOARCH=arm64 go build -ldflags "-X github.com/supabase/auth/cmd.Version=`git rev-parse HEAD`" -o gotrue-arm64
+go build -ldflags "-X github.com/cybinon/auth/cmd.Version=`git rev-parse HEAD`"
+GOOS=linux GOARCH=arm64 go build -ldflags "-X github.com/cybinon/auth/cmd.Version=`git rev-parse HEAD`" -o gotrue-arm64
 ```
 
 3. Execute the auth binary: `./auth`
@@ -54,8 +54,8 @@ security updates.
 
 Otherwise, please make sure you setup a process to promptly update to the
 latest version. You can do that by following this repository, specifically the
-[Releases](https://github.com/supabase/auth/releases) and [Security
-Advisories](https://github.com/supabase/auth/security/advisories) sections.
+[Releases](https://github.com/cybinon/auth/releases) and [Security
+Advisories](https://github.com/cybinon/auth/security/advisories) sections.
 
 ### Backward compatibility
 
@@ -1219,7 +1219,7 @@ scopes=<optional additional scopes depending on the provider (email and name are
 
 Redirects to provider and then to `/callback`
 
-For apple specific setup see: <https://github.com/supabase/auth#apple-oauth>
+For apple specific setup see: <https://github.com/cybinon/auth#apple-oauth>
 
 ### **GET /callback**
 

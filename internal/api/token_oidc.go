@@ -7,12 +7,12 @@ import (
 	"net/http"
 
 	"github.com/coreos/go-oidc/v3/oidc"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/provider"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/observability"
-	"github.com/supabase/auth/internal/storage"
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/api/provider"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/observability"
+	"github.com/cybinon/auth/internal/storage"
 )
 
 // IdTokenGrantParams are the parameters the IdTokenGrant method accepts

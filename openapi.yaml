@@ -25,7 +25,7 @@ info:
     url: https://github.com/supabase/supabase/discussions
   license:
     name: MIT License
-    url: https://github.com/supabase/auth/blob/master/LICENSE
+    url: https://github.com/cybinon/auth/blob/master/LICENSE
 externalDocs:
   description: Learn more about Supabase Auth
   url: https://supabase.com/docs/guides/auth/overview

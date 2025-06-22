@@ -8,9 +8,9 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/cybinon/auth/cmd"
+	"github.com/cybinon/auth/internal/observability"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/cmd"
-	"github.com/supabase/auth/internal/observability"
 )
 
 //go:embed migrations/*

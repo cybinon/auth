@@ -6,9 +6,9 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/storage/test"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/storage"
+	"github.com/cybinon/auth/internal/storage/test"
 )
 
 var (

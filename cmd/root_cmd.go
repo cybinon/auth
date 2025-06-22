@@ -3,10 +3,10 @@ package cmd
 import (
 	"context"
 
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/observability"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/observability"
 )
 
 var (

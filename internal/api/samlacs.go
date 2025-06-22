@@ -10,14 +10,14 @@ import (
 	"time"
 
 	"github.com/crewjam/saml"
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/api/provider"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/observability"
+	"github.com/cybinon/auth/internal/storage"
+	"github.com/cybinon/auth/internal/utilities"
 	"github.com/fatih/structs"
 	"github.com/gofrs/uuid"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/provider"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/observability"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/utilities"
 )
 
 func (a *API) samlDestroyRelayState(ctx context.Context, relayState *models.SAMLRelayState) error {

@@ -3,12 +3,12 @@ package api
 import (
 	"net/http"
 
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/sms_provider"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/crypto"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/api/sms_provider"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/crypto"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/storage"
 )
 
 const InvalidNonceMessage = "Nonce has expired or is invalid"

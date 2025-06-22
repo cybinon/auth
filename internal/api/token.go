@@ -12,12 +12,12 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/xeipuuv/gojsonschema"
 
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/hooks/v0hooks"
-	"github.com/supabase/auth/internal/metering"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/observability"
-	"github.com/supabase/auth/internal/storage"
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/hooks/v0hooks"
+	"github.com/cybinon/auth/internal/metering"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/observability"
+	"github.com/cybinon/auth/internal/storage"
 )
 
 // AccessTokenClaims is a struct thats used for JWT claims

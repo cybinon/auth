@@ -1,4 +1,4 @@
-module github.com/supabase/auth
+module github.com/cybinon/auth
 
 require (
 	github.com/Masterminds/semver/v3 v3.1.1 // indirect
@@ -86,7 +86,7 @@ require (
 )
 
 require (
-	github.com/bits-and-blooms/bloom/v3 v3.6.0
+	github.com/bits-and-blooms/bloom/v3 v3.7.0
 	github.com/btcsuite/btcutil v1.0.2
 	github.com/crewjam/saml v0.4.14
 	github.com/fatih/structs v1.1.0

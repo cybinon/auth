@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/observability"
 	"github.com/gofrs/uuid"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/observability"
 
 	standardwebhooks "github.com/standard-webhooks/standard-webhooks/libraries/go"
 )

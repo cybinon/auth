@@ -5,12 +5,12 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/mailer"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/utilities"
 	"github.com/gofrs/uuid"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/mailer"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/utilities"
 )
 
 type Name string

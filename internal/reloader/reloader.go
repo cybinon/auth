@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/cybinon/auth/internal/conf"
 	"github.com/fsnotify/fsnotify"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/conf"
 )
 
 const (

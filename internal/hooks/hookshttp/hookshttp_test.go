@@ -11,11 +11,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/reloader"
 	"github.com/gofrs/uuid"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/reloader"
 )
 
 type M = map[string]any

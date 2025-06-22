@@ -9,7 +9,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/supabase/auth/internal/conf"
+	"github.com/cybinon/auth/internal/conf"
 )
 
 // GetIPAddress returns the real IP address of the HTTP request. It parses the

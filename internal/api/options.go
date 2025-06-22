@@ -3,10 +3,10 @@ package api
 import (
 	"time"
 
+	"github.com/cybinon/auth/internal/conf"
+	"github.com/cybinon/auth/internal/ratelimit"
 	"github.com/didip/tollbooth/v5"
 	"github.com/didip/tollbooth/v5/limiter"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/ratelimit"
 )
 
 type Option interface {

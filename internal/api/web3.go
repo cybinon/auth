@@ -6,12 +6,12 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/provider"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/utilities"
-	"github.com/supabase/auth/internal/utilities/siws"
+	"github.com/cybinon/auth/internal/api/apierrors"
+	"github.com/cybinon/auth/internal/api/provider"
+	"github.com/cybinon/auth/internal/models"
+	"github.com/cybinon/auth/internal/storage"
+	"github.com/cybinon/auth/internal/utilities"
+	"github.com/cybinon/auth/internal/utilities/siws"
 )
 
 type Web3GrantParams struct {

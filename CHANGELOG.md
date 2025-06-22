@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.177.0](https://github.com/cybinon/auth/compare/v2.176.1...v2.177.0) (2025-06-22)
+
+
+### Features
+
+* added localhost testing ([365e4a8](https://github.com/cybinon/auth/commit/365e4a83f195c6f3e9757dcbe6eb2d85545d13b4))
+* added releases ([ee876d8](https://github.com/cybinon/auth/commit/ee876d8ff14a5f1dd01f01aaa96f4a2afa6dfe11))
+* added sid ([c005672](https://github.com/cybinon/auth/commit/c005672745893ee8ed9fc1880b169a0e857751a8))
+
+
+### Bug Fixes
+
+* add missing provider info to signedup audit logs ([#2061](https://github.com/cybinon/auth/issues/2061)) ([c6e0cbe](https://github.com/cybinon/auth/commit/c6e0cbefe5b609ac3362c23d0f7cb9d9bb04abc9))
+* invites should send another email when user exists ([#2058](https://github.com/cybinon/auth/issues/2058)) ([96469bd](https://github.com/cybinon/auth/commit/96469bd01b9c37f938aabdb0434a054a111cf963))
+
 ## [2.176.1](https://github.com/supabase/auth/compare/v2.176.0...v2.176.1) (2025-06-11)
 
 
